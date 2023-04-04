@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   resources :users, only: [:index, :show, :edit]
-  resources :books, only: [:index, :show, :edit]
+  resources :books, only: [:index, :show, :edit, :create]
 end
