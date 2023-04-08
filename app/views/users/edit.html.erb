@@ -3,24 +3,24 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>User info</h2>
-    <form enctype="multipart/form-data" action="/users/94142" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="wnwHedIOpYImWrsMkN4cAEU9XrRY_bp-hALNM6A5utG5eqE4YLxJNohNAkeek3GF0-XlIJlwb4gMcUxdDxD1Sg" autocomplete="off">
+    <%= form_with model: @user do |f| %>
 
       <div class="form-group">
         <label for="user_name">Name</label>
-        <input class="form-control name" type="text" name="user[name]" id="user_name">
+        <%= f.text_field :name, autofocus: true, id:"user_name", placeholder:"名前", class:"form-control name"%>
       </div>
      <div class="form-group">
         <label for="user_image">Image</label>
-        <input class="form-control-file user_image" accept="image/*" type="file" name="user[profile_image]" id="user_profile_image">
+        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"form-control-file user_image" %>
       </div>
       <div class="form-group">
         <label for="user_introduction">Introduction</label>
-        <textarea class="form-control introduction" name="user[introduction]" id="user_introduction"></textarea>
-      </div>
+        <%= f.text_area :introduction, class:"form-control introduction" %>
+       </div>
       <div class="form-group">
-        <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
+        <%= f.submit "Update User", class:"btn btn-secondary" %>
       </div>
-</form>
+<% end %>
 </div>
 </div>
 
