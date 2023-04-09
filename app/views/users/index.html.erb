@@ -7,7 +7,9 @@
           <%= form_with model: @user, url:edit_user_path(@user.id), method: :patch do |f| %>
             <table class="table">
               <tbody>
-                <tr></tr>
+                <tr>
+                  <%= image_tag @user.get_profile_image(100,100) %>
+                </tr>
                 <tr>
                   <th>name</th>
                   <th>
@@ -41,17 +43,17 @@
         <% end %>
       </ul>
     <% end %>
-    <%= form_with model: @book do |f| %>
-      <h5>Title</h5>
-      <%= f.text_field :title %>
+       <%= form_with model: @book do |f| %>
+        <h5>Title</h5>
+        <%= f.text_field :title %>
 
-      <h5>Option</h5>
-      <%= f.text_area :option %>
+        <h5>Option</h5>
+        <%= f.text_area :option %>
 
-      <div class="form-group">
-      <%= f.submit 'Create Book', class:"btn btn-success" %>
-      </div>
-    <% end %>
+              <div class="form-group">
+              <%= f.submit 'Create Book', class:"btn btn-success" %>
+              </div>
+              <% end %>
     </div>
 
 
@@ -72,7 +74,13 @@
             <td>
               <%= image_tag @user.get_profile_image(50,50) %>
             </td>
-            <td><a class="user_94139" href="/users/94139">Show</a></td>
+            <td>
+              <%= @user.name %>
+            </td>
+            <td>
+              <%= link_to user_path(user.id) do %>
+  		        Show
+  		        <% end %>
           </tr>
         <% end %>
       </tbody>
