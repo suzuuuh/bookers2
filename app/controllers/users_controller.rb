@@ -21,6 +21,16 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def create
+    @book = Book.new(book_params)
+    @book.user_id = current_user.id
+    if @book.save
+      redirect_to book_path
+    else
+      render :new
+    end
+  end
+
   def update
     user = User.find(params[:id])
     if user.update(user_params)
